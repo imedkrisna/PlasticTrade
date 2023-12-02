@@ -1,5 +1,8 @@
 # Prerequisites
 *.d
+*.xlsx
+*.dta
+*.csv
 
 # Compiled Object files
 *.slo
@@ -30,3 +33,4 @@
 *.exe
 *.out
 *.app
+.Rproj.user

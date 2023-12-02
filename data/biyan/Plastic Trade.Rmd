@@ -1,0 +1,89 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+#Setup
+setwd("D:/BEE/CIPS Werk/Ecopp/Paper Trade/Mas Imed/data")
+library(readxl)
+library(tidyverse)
+library(ggplot2)
+library(reshape2)
+library(dplyr)
+library(writexl)
+
+
+```
+
+```{r}
+#Data Cleaning
+
+## Data01
+
+data01 <- read_excel("#29256.xlsx",5) %>%
+  rename(hs_8="HS_2022", hs_4="hs 4 digit", hs_6="hs 6 digit", desc="DESKRIPSI BTKI_2022", source="DESKRIPSI_INDONESIA", 
+ivolume_2002="SumOfB_2002", ivalue_2002="SumOfN_2002", ivolume_2003="SumOfB_2003", ivalue_2003="SumOfN_2003", ivolume_2004="SumOfB_2004", ivalue_2004="SumOfN_2004", ivolume_2005="SumOfB_2005", ivalue_2005="SumOfN_2005", ivolume_2006="SumOfB_2006", ivalue_2006="SumOfN_2006", ivolume_2007="SumOfB_2007", ivalue_2007="SumOfN_2007", ivolume_2008="SumOfB_2008", ivalue_2008="SumOfN_2008", ivolume_2009="SumOfB_2009", ivalue_2009="SumOfN_2009", ivolume_2010="SumOfB_2010", ivalue_2010="SumOfN_2010", ivolume_2011="SumOfB_2011", ivalue_2011="SumOfN_2011", ivolume_2012="SumOfB_2012", ivalue_2012="SumOfN_2012", ivolume_2013="SumOfB_2013", ivalue_2013="SumOfN_2013", ivolume_2014="SumOfB_2014", ivalue_2014="SumOfN_2014", ivolume_2015="SumOfB_2015", ivalue_2015="SumOfN_2015", ivolume_2016="SumOfB_2016", ivalue_2016="SumOfN_2016", ivolume_2017="SumOfB_2017", ivalue_2017="SumOfN_2017", ivolume_2018="SumOfB_2018", ivalue_2018="SumOfN_2018", ivolume_2019="SumOfB_2019", ivalue_2019="SumOfN_2019", ivolume_2020="SumOfB_2020", ivalue_2020="SumOfN_2020", ivolume_2021="SumOfB_2021", ivalue_2021="SumOfN_2021", ivolume_2022="SumOfB_2022", ivalue_2022="SumOfN_2022",) %>%
+  select(hs_4, hs_6, hs_8, desc, source,
+         ivolume_2002, ivolume_2003, ivolume_2004, ivolume_2005, ivolume_2006, ivolume_2007, ivolume_2008, ivolume_2009, ivolume_2010, ivolume_2011, ivolume_2012, ivolume_2013, ivolume_2014, ivolume_2015, ivolume_2016, ivolume_2017, ivolume_2018, ivolume_2019, ivolume_2020, ivolume_2021,ivolume_2022,ivalue_2002, ivalue_2003, ivalue_2004, ivalue_2005, ivalue_2006, ivalue_2007, ivalue_2008, ivalue_2009, ivalue_2010, ivalue_2011, ivalue_2012, ivalue_2013, ivalue_2014, ivalue_2015, ivalue_2016, ivalue_2017, ivalue_2018, ivalue_2019, ivalue_2020, ivalue_2021,ivalue_2022)
+
+write_xlsx(data01, "data01.xlsx")
+
+## Data02, imported from stata
+
+data02 <- read_excel("data02.xls")
+data02$year <- as.character(data02$year)
+data02$year <- as.Date(data02$year,format = "%Y")
+
+## China Only
+data02chn <- data02 %>% filter(source=="Cina")
+
+## All 2002 - 2010
+data02a <- data02 %>% filter(year== c("2002-10-16","2003-10-16","2004-10-16","2005-10-16","2006-10-16","2007-10-16","2008-10-16","2009-10-16","2010-10-16"))
+
+
+## All 2010 - 2022
+data02b <- data02 %>% filter(year== c("2010-10-16","2011-10-16","2012-10-16","2013-10-16","2014-10-16","2015-10-16","2016-10-16","2017-10-16","2018-10-16", "2019-10-16","2020-10-16","2021-10-16","2022-10-16"))
+
+
+## 
+```
+
+```{r}
+# Data Visualization
+## Import volume over year
+ggplot(data02, aes(x=year,y=ivolume_,fill=hs_6)) +
+  geom_bar(position="stack", stat="identity")+
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y")+
+  labs(title = "Indonesia's Annual Plastic Waste Imports 2002 - 2022",
+       x="Year", y="Import Volume (tons)", fill="HS Code") +
+  theme_classic()
+
+## Import volume 2002-2010
+ggplot(data02a, aes(x=year,y=ivolume_,fill=hs_6)) +
+  geom_bar(position="stack", stat="identity")+
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y")+ 
+  labs(title = "Indonesia's Annual Plastic Waste Imports 2002 - 2010",
+       x="Year", y="Import Volume (tons)", fill="HS Code") +
+  theme_classic()
+
+## Import volume 2010-2022
+ggplot(data02b, aes(x=year,y=ivolume_,fill=hs_6)) +
+  geom_bar(position="stack", stat="identity")+
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y")+
+  labs(title = "Indonesia's Annual Plastic Waste Imports 2002 - 2010",
+       x="Year", y="Import Volume (tons)", fill="HS Code") +
+  theme_classic()
+
+## Import trend from China  
+ggplot(data02chn, aes(x=year,y=ivolume_,fill=hs_6)) +
+  geom_bar(position="stack", stat="identity")+
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y")+
+  scale_y_continuous(breaks=c(250000,500000,750000,1000000,1250000,1500000,1750000,2000000))+
+  labs(title = "Indonesia's Annual Plastic Waste Imports from China 2002 - 2022",
+       x="Year", y="Import Volume (tons)", fill="HS Code") +
+  theme_classic()
+  
+```
+
