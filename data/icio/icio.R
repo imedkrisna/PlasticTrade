@@ -105,8 +105,7 @@ gabung4<-gabung|>slice(1:2) |> rename(group=`...1`)
 gabung4<-gabung4 |> rbind(gabung4,gabung3a[2,])|>
   pivot_longer(!group,names_to = "year",values_to = "value")
 
-
-
 gabung4 |> ggplot(aes(x=as.numeric(year),y=value,color=group))+geom_line()+
   theme_classic()+
   labs(x=" ",y=" ")
+ggsave("../../fig/value.png")
