@@ -47,24 +47,25 @@ clear all
 use miidi.dta,clear
 gen plastic=0
 replace plastic = 1 if substr(HS2012,1,4)=="3915"
-gen disic5 = DISIC508
-replace disic5=DISIC509 if disic5==""
-replace disic5=DISIC510 if disic5==""
-replace disic5=DISIC511 if disic5==""
-replace disic5=DISIC512 if disic5==""
-gen disic2=substr(disic5,1,2)
-drop if plastic ==0
-bys year disic2: egen pctr=sum(NILAI__U)
-keep year disic2 pctr
-duplicates drop year disic2,force
+keep if plastic==1
+bys psid year: egen implas=sum(NILAI__U)
+duplicates drop psid year,force
+keep psid year implas plastic
+merge 1:m psid year using paper2si
+replace plastic=0 if plastic==.
+replace disic5=disic5*100 if disic5<999
+tostring disic5,replace
+gen disic44=substr(disic5,1,4)
 
-clear all
-use miidi.dta,clear
-gen plastic=0
-replace plastic = 1 if substr(HS2012,1,4)=="3915"
-merge m:m psid year using paper2si
-replace plastic = 0 if plastic==.
+destring disic44,replace
 
-// aggregate by countries
-// aggregate by 3915
+// convert ISIC 3 (2008 & 2009) to ISIC4 (2010,2011,2012)
 
+quietly do isic
+tostring disic44,replace
+replace disic44="0162" if disic44=="162"
+gen disic22=substr(disic44,1,2)
+
+save datause,replace
+
+gen plastic
