@@ -1,6 +1,7 @@
 library(tidyverse)
 library(lubridate)
 library(readxl)
+library(patchwork)
 
 setwd('C:/github/PlasticTrade/data')
 
@@ -10,13 +11,23 @@ pma<-read_excel('investasi.xlsx',sheet='PMA') |>
 pmdn<-read_excel('investasi.xlsx',sheet='PMDN') |>
   pivot_longer(!c(tahun,kind),names_to="industri",values_to="values")
 
-pma |> filter(kind=="project") |>
-  filter(industri==c("(39-2020) Aktivitas Remediasi dan Pengelolaan Limbah dan Sampah Lainnya",
-"(38-2020) Pengumpulan, Treatment dan Pembuangan Limbah dan Sampah serta Aktivitas Pemulihan Material"
-)) |> 
-  ggplot(aes(x=tahun,y=values,color=industri))+geom_point()+theme(legend.position = "none")
+pmdn$tahun<-as.numeric(pmdn$tahun)
+pma$tahun<-as.numeric(pma$tahun)
 
+a<-pma |> filter(tahun>2010) |> filter(kind=="project") |>
+  filter(industri=="(38-2020) Pengumpulan, Treatment dan Pembuangan Limbah dan Sampah serta Aktivitas Pemulihan Material") |>
+  ggplot(aes(x=tahun,y=values,color=industri))+geom_line()+theme(legend.position = "none")
 
-pmdn |> filter(kind=="project") |>
+b<-pma |> filter(tahun>2010) |> filter(kind=="us1000") |>
   filter(industri== "(38-2020) Pengumpulan, Treatment dan Pembuangan Limbah dan Sampah serta Aktivitas Pemulihan Material") |> 
-  ggplot(aes(x=tahun,y=values,color=industri))+geom_point()+theme(legend.position = "none")
+  ggplot(aes(x=tahun,y=values,color=industri))+geom_line()+theme(legend.position = "none")
+
+c<-pmdn |> filter(tahun>2010) |> filter(kind=="project") |>
+  filter(industri=="(38-2020) Pengumpulan, Treatment dan Pembuangan Limbah dan Sampah serta Aktivitas Pemulihan Material") |>
+  ggplot(aes(x=tahun,y=values,color=industri))+geom_line()+theme(legend.position = "none")
+
+d<-pmdn |> filter(tahun>2010) |> filter(kind=="us1000") |>
+  filter(industri== "(38-2020) Pengumpulan, Treatment dan Pembuangan Limbah dan Sampah serta Aktivitas Pemulihan Material") |> 
+  ggplot(aes(x=tahun,y=values,color=industri))+geom_line()+theme(legend.position = "none")
+
+a+b+c+d
