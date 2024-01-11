@@ -55,6 +55,5 @@ d<-pmdn |> filter(tahun>2010) |> filter(kind=="us1000") |>
   theme(legend.position = "none",
         text = element_text(size = 10))
   
-
 a+b+c+d
 ggsave('../fig/investasi.png')
