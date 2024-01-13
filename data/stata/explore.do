@@ -68,4 +68,3 @@ gen disic22=substr(disic44,1,2)
 
 save datause,replace
 
-gen plastic
