@@ -1,0 +1,27 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx3600\clbrdrt\brdrs\cellx5040\clbrdrt\brdrs\cellx6480
+\ql \cell\qc (1)\cell\qc (2)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3600\cellx5040\cellx6480
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx3600\clbrdrb\brdrs\cellx5040\clbrdrb\brdrs\cellx6480
+\ql VARIABLES\cell\qc RE\cell\qc FE\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3600\cellx5040\cellx6480
+\ql \cell\qc \cell\qc \cell\row
+\ql TFP\cell\qc 1.038***\cell\qc 1.085***\cell\row
+\ql \cell\qc (0.0110)\cell\qc (0.0155)\cell\row
+\ql Log #workers\cell\qc 0.595***\cell\qc 0.490***\cell\row
+\ql \cell\qc (0.00895)\cell\qc (0.0175)\cell\row
+\ql Log capital\cell\qc 0.0653***\cell\qc 0.0170**\cell\row
+\ql \cell\qc (0.00466)\cell\qc (0.00743)\cell\row
+\ql log plastic waste import\cell\qc 0.0206\cell\qc 0.0265\cell\row
+\ql \cell\qc (0.0180)\cell\qc (0.0192)\cell\row
+\ql Constant\cell\qc -0.146\cell\qc 0.465***\cell\row
+\ql \cell\qc (0.0922)\cell\qc (0.178)\cell\row
+\ql \cell\qc \cell\qc \cell\row
+\ql Observations\cell\qc 18,819\cell\qc 18,819\cell\row
+\ql R-squared\cell\qc \cell\qc 0.390\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx3600\clbrdrb\brdrs\cellx5040\clbrdrb\brdrs\cellx6480
+\ql Number of psid\cell\qc 6,500\cell\qc 6,500\cell\row
+\pard\qc
+Standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}

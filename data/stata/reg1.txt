@@ -1,0 +1,19 @@
+	(1)
+VARIABLES	lva
+	
+tfp	1.085***
+	(0.0155)
+ln	0.490***
+	(0.0175)
+lk	0.0185**
+	(0.00743)
+limplas	0.0265
+	(0.0192)
+Constant	0.465***
+	(0.178)
+	
+Observations	18,819
+Number of psid	6,500
+R-squared	0.390
+Standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

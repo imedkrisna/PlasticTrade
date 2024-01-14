@@ -1,0 +1,21 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx2448\clbrdrt\brdrs\cellx3312\clbrdrt\brdrs\cellx4752\clbrdrt\brdrs\cellx6192\clbrdrt\brdrs\cellx7632\clbrdrt\brdrs\cellx9072
+\ql \cell\qc (1)\cell\qc (2)\cell\qc (3)\cell\qc (4)\cell\qc (5)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx2448\cellx3312\cellx4752\cellx6192\cellx7632\cellx9072
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx2448\clbrdrb\brdrs\cellx3312\clbrdrb\brdrs\cellx4752\clbrdrb\brdrs\cellx6192\clbrdrb\brdrs\cellx7632\clbrdrb\brdrs\cellx9072
+\ql VARIABLES\cell\qc N\cell\qc mean\cell\qc sd\cell\qc min\cell\qc max\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx2448\cellx3312\cellx4752\cellx6192\cellx7632\cellx9072
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql dasing\cell\qc 145\cell\qc 43.41\cell\qc 49.70\cell\qc 0\cell\qc 100\cell\row
+\ql ltlnou\cell\qc 145\cell\qc 1,471\cell\qc 2,695\cell\qc 20\cell\qc 16,985\cell\row
+\ql rimvcu\cell\qc 145\cell\qc 4.216e+07\cell\qc 1.027e+08\cell\qc 0\cell\qc 5.856e+08\cell\row
+\ql v1115\cell\qc 144\cell\qc 6.422e+08\cell\qc 4.267e+09\cell\qc 0\cell\qc 3.025e+10\cell\row
+\ql output\cell\qc 145\cell\qc 2.318e+08\cell\qc 4.131e+08\cell\qc 4.017e+06\cell\qc 2.060e+09\cell\row
+\ql vtlvcu\cell\qc 145\cell\qc 1.055e+08\cell\qc 1.890e+08\cell\qc 798,542\cell\qc 9.381e+08\cell\row
+\ql prprex\cell\qc 107\cell\qc 51.07\cell\qc 40.56\cell\qc 0\cell\qc 100\cell\row
+\ql mu\cell\qc 145\cell\qc 51,892\cell\qc 66,866\cell\qc 1,654\cell\qc 392,052\cell\row
+\ql tfp\cell\qc 84\cell\qc 11.82\cell\qc 0.720\cell\qc 10.51\cell\qc 13.69\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx2448\clbrdrb\brdrs\cellx3312\clbrdrb\brdrs\cellx4752\clbrdrb\brdrs\cellx6192\clbrdrb\brdrs\cellx7632\clbrdrb\brdrs\cellx9072
+\ql Number of groups\cell\qc 6,500\cell\qc 6,500\cell\qc 6,500\cell\qc 6,500\cell\qc 6,500\cell\row
+}

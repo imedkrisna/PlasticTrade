@@ -38,9 +38,11 @@ use miidi.dta,clear
 gen plastic=0
 replace plastic = 1 if substr(HS2012,1,4)=="3915"
 bys year plastic: egen pctr=sum(NILAI__U)
+bys year: egen pltr=sum(NILAI__U)
 duplicates drop year plastic,force
 keep if plastic==1
-keep year pctr
+gen pct=pctr/pltr*100
+keep year pctr pltr pct
 export delimited using "../impor", replace
 
 clear all
@@ -185,20 +187,57 @@ replace psidp=1 if psid==	68469
 replace psidp=1 if psid==	68863
 replace psidp=1 if psid==	70575
 
-
-save datause2, replace
-
 sum dasing ltlnou rimvcu v1115 output vtlvcu prprca if psidp==0
 sum dasing ltlnou rimvcu v1115 output vtlvcu prprca if psidp==1
 drop _merge
 merge m:1 year using "deflator.dta"
 gen netiv=ctttcu-ctsacu-ctdacu
 gen lo=log(output/defoutput)
+gen lva=log(vtlvcu/defoutput)
 gen lk=log(v1115/defkap)
 gen ln=log(ltlnou)
+gen lm=log(rtlvcu/definput)
 gen linv=log(netiv/defkap)
+replace implas=0 if implas==.
+gen limplas=log(1+implas/definput)
+
+la var netiv "net investment"
+la var lo "Log output"
+la var lva "Log value added"
+la var lk "Log capital"
+la var ln "Log #workers"
+la var plastic "plastic waste import dummy"
+la var limplas "log plastic waste import"
+
 
 gen regg=0
 replace regg=1 if lk>5 & lk<.
 
+save datause2, replace
+
 xtset psid year
+prodest lva if regg==1, free(ln) state(lk) proxy(lm) method(lp) fsresidual(om) va
+outreg2 using "tfp1.xls",excel replace
+
+predict mu,markups inputvar(ln)
+
+predict tfp,omega
+
+la var mu "Markups"
+la var tfp "TFP"
+
+outreg2 using stat1.doc, replace sum(log) keep(output vtlvcu ltlnou v1115 rimvcu prprex dasing mu tfp)
+
+outreg2 using stat2.doc if psidp==0, replace sum(log) keep(output vtlvcu ltlnou v1115 rimvcu prprex dasing mu tfp)
+
+outreg2 using stat3.doc if psidp==1, replace sum(log) keep(output vtlvcu ltlnou v1115 rimvcu prprex dasing mu tfp)
+
+xtreg lva tfp ln lk plastic if regg==1
+outreg2 using "reg.doc", replace ctitle(RE) label
+xtreg lva tfp ln lk plastic if regg==1,fe
+outreg2 using "reg.doc", replace ctitle(FE) label
+xtreg lva tfp ln lk limplas if regg==1
+outreg2 using "reg.doc", replace ctitle(RE) label
+xtreg lva tfp ln lk limplas if regg==1, fe
+outreg2 using "reg.doc", append ctitle(FE) label
+
