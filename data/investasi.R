@@ -57,3 +57,9 @@ d<-pmdn |> filter(tahun>2010) |> filter(kind=="us1000") |>
   
 a+b+c+d
 ggsave('../fig/investasi.png')
+
+read_csv("icio/impor.csv") |>
+  ggplot(aes(x=year,y=pctr))+geom_bar(stat="identity")+theme_classic()+
+  scale_y_continuous(labels = comma)+
+  labs(title="",x="",y="1000 USD")
+ggsave('../fig/impor.png')

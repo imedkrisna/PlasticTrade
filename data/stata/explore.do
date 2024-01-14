@@ -235,9 +235,9 @@ outreg2 using stat3.doc if psidp==1, replace sum(log) keep(output vtlvcu ltlnou 
 xtreg lva tfp ln lk plastic if regg==1
 outreg2 using "reg.doc", replace ctitle(RE) label
 xtreg lva tfp ln lk plastic if regg==1,fe
-outreg2 using "reg.doc", replace ctitle(FE) label
+outreg2 using "reg.doc", append ctitle(FE) label
 xtreg lva tfp ln lk limplas if regg==1
-outreg2 using "reg.doc", replace ctitle(RE) label
+outreg2 using "reg.doc", append ctitle(RE) label
 xtreg lva tfp ln lk limplas if regg==1, fe
 outreg2 using "reg.doc", append ctitle(FE) label
 

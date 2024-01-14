@@ -14,7 +14,7 @@
 \ql vtlvcu\cell\qc 32,173\cell\qc 2.686e+07\cell\qc 2.754e+08\cell\qc 1,720\cell\qc 2.330e+10\cell\row
 \ql prprex\cell\qc 15,962\cell\qc 16.05\cell\qc 32.73\cell\qc 0\cell\qc 100\cell\row
 \ql mu\cell\qc 32,173\cell\qc 47,620\cell\qc 418,367\cell\qc 2.933\cell\qc 4.586e+07\cell\row
-\ql tfp\cell\qc 18,735\cell\qc 10.65\cell\qc 0.915\cell\qc 7.195\cell\qc 16.38\cell\row
+\ql tfp\cell\qc 18,735\cell\qc 10.63\cell\qc 0.913\cell\qc 7.186\cell\qc 16.35\cell\row
 \ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
 \trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx2448\clbrdrb\brdrs\cellx3456\clbrdrb\brdrs\cellx4896\clbrdrb\brdrs\cellx6336\clbrdrb\brdrs\cellx7200\clbrdrb\brdrs\cellx8640
 \ql Number of groups\cell\qc 6,500\cell\qc 6,500\cell\qc 6,500\cell\qc 6,500\cell\qc 6,500\cell\row

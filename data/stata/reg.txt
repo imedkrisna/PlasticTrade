@@ -1,19 +1,21 @@
-		(1)	(2)
-VARIABLES	LABELS	RE	FE
-			
-tfp	TFP	1.038***	1.085***
-		(0.0110)	(0.0155)
-ln	Log #workers	0.595***	0.490***
-		(0.00895)	(0.0175)
-lk	Log capital	0.0653***	0.0170**
-		(0.00466)	(0.00743)
-limplas	log plastic waste import	0.0206	0.0265
-		(0.0180)	(0.0192)
-Constant	Constant	-0.146	0.465***
-		(0.0922)	(0.178)
-			
-Observations		18,819	18,819
-R-squared			0.390
-Number of psid		6,500	6,500
-Standard errors in parentheses			
-*** p<0.01, ** p<0.05, * p<0.1			
+		(1)	(2)	(3)	(4)
+VARIABLES	LABELS	RE	FE	RE	FE
+					
+tfp	TFP	1.038***	1.085***	1.038***	1.085***
+		(0.0110)	(0.0155)	(0.0110)	(0.0155)
+ln	Log #workers	0.595***	0.490***	0.595***	0.490***
+		(0.00895)	(0.0175)	(0.00895)	(0.0175)
+lk	Log capital	0.0667***	0.0186**	0.0667***	0.0185**
+		(0.00465)	(0.00743)	(0.00465)	(0.00743)
+plastic	plastic waste import dummy	0.268*	0.300**		
+		(0.141)	(0.151)		
+limplas	log plastic waste import			0.0206	0.0265
+				(0.0180)	(0.0192)
+Constant	Constant	-0.146	0.463***	-0.146	0.465***
+		(0.0922)	(0.178)	(0.0922)	(0.178)
+					
+Observations		18,819	18,819	18,819	18,819
+R-squared			0.390		0.390
+Number of psid		6,500	6,500	6,500	6,500
+Standard errors in parentheses					
+*** p<0.01, ** p<0.05, * p<0.1					
