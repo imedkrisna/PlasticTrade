@@ -5,12 +5,12 @@ library(patchwork)
 library(scales)
 options(scipen = 999)
 
-setwd('C:/github/PlasticTrade/data')
+setwd('C:/github/PlasticTrade')
 
-pma<-read_excel('investasi.xlsx',sheet='PMA') |>
+pma<-read_excel('data/investasi.xlsx',sheet='PMA') |>
   pivot_longer(!c(tahun,kind),names_to="industri",values_to="values")
 
-pmdn<-read_excel('investasi.xlsx',sheet='PMDN') |>
+pmdn<-read_excel('data/investasi.xlsx',sheet='PMDN') |>
   pivot_longer(!c(tahun,kind),names_to="industri",values_to="values")
 
 pmdn$tahun<-as.numeric(pmdn$tahun)
@@ -56,10 +56,10 @@ d<-pmdn |> filter(tahun>2010) |> filter(kind=="us1000") |>
         text = element_text(size = 10))
   
 a+b+c+d
-ggsave('../fig/investasi.png')
+ggsave('fig/investasi.png')
 
 read_csv("icio/impor.csv") |>
   ggplot(aes(x=year,y=pctr))+geom_bar(stat="identity")+theme_classic()+
   scale_y_continuous(labels = comma)+
   labs(title="",x="",y="1000 USD")
-ggsave('../fig/impor.png')
+ggsave('fig/impor.png')
