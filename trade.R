@@ -34,6 +34,23 @@ wew|>filter(partnerISO=="W00" & cmdCode!="3915")|>
   theme_classic()
 ggsave("fig/fig1.png",width=6,height=4)
 
+## Fig 1 but large fotns
+
+wew|>filter(partnerISO=="W00" & cmdCode!="3915")|>
+  ggplot(aes(fill=cmdCode,x=period,y=qty/1000))+
+  geom_bar(position="stack",stat="identity")+
+  scale_x_continuous(expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0),labels = scales::comma)+
+  scale_fill_manual(values=c("391510"="red",
+                             "391520"="darkgreen",
+                             "391530"="purple",
+                             "391590"="blue"))+
+  labs(x="",
+       y="",
+       fill="")+
+  theme_classic()+theme(text=element_text(size=23))
+ggsave("fig/fig1a.png",width=6,height=4)
+
 ## Fig 2. import by partner
 
 fusa<-wew|>filter(partnerISO=="USA" & cmdCode!="3915")|>
